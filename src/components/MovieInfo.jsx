@@ -10,12 +10,12 @@ const MovieInfo = ({ movie, addMovie , addToWatched}) => {
     : "N/A";
 
   return (
-    <div className="flex w-[450px] min-h-[170px] bg-[#22254b] rounded-lg shadow-md overflow-hidden">
+    <div className="flex w-full max-w-[350px] min-h-[140px] bg-[#22254b] rounded-lg shadow-md overflow-hidden">
       {/* Image */}
       <img
         src={imageUrl}
         alt={movie.title}
-        className="w-[100px] min-w-[70px] h-[170px] object-cover"
+        className="w-[100px] h-full object-cover"
       />
       {/* Info and Buttons */}
       <div className="flex flex-col justify-between flex-1 p-3">

@@ -10,34 +10,42 @@ const Card = ({ movie, listType , removeMovieFromWatchList , removeMovieFromWatc
 
   return (
     <div
-      className="group flex flex-col items-center bg-[#22254b] rounded-lg shadow-md overflow-hidden w-[180px] min-h-[260px] p-2
-      transition-shadow transition-transform duration-300 hover:shadow-2xl transform hover:scale-105"
+      className="
+        group flex flex-col items-center bg-[#22254b] rounded-lg shadow-md overflow-hidden
+        w-full max-w-[170px] mx-auto p-2
+        transition-shadow duration-300
+        sm:hover:shadow-2xl sm:hover:scale-105
+      "
     >
       {/* Image */}
       <img
         src={imageUrl}
         alt={movie.title}
-        className="w-[150px] h-[220px] object-cover rounded"
+        className="w-[120px] h-[170px] object-cover rounded"
       />
       {/* Title */}
-      <div className="mt-3 text-white font-bold text-center text-base break-words w-full">
+      <div className="mt-2 text-white font-bold text-center text-base break-words w-full">
         {movie.title}
       </div>
-      {/* Buttons - only visible on hover */}
+      {/* Buttons - always visible on mobile, hover on sm+ */}
       <div
-        className="flex flex-row items-center gap-3 mt-auto mb-3
-        opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        className="flex flex-row items-center gap-3 mt-2 mb-1
+  opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+  transition-opacity duration-200"
       >
-        <button className="cursor-pointer text-white hover:text-green-500 transition-colors duration-150" 
-        onClick={ () => {
-          if(listType === "watchList") return removeMovieFromWatchList(movie.id)
-          else return removeMovieFromWatched(movie.id)
-        } } >
+        <button
+          className="cursor-pointer text-white hover:text-red-400 transition-colors duration-150"
+          onClick={() => {
+            if(listType === "watchList") return removeMovieFromWatchList(movie.id)
+            else return removeMovieFromWatched(movie.id)
+          }}
+        >
           <ImCross size={18} />
         </button>
-        <button className="cursor-pointer text-white hover:text-green-500 transition-colors duration-150"
-                      onClick={ () => ToggleMovieByListType(movie , listType) }    
-                      >
+        <button
+          className="cursor-pointer text-white hover:text-green-400 transition-colors duration-150"
+          onClick={() => ToggleMovieByListType(movie, listType)}
+        >
           {listType === "watchList" ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
         </button>
       </div>
